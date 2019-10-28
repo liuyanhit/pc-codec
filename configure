@@ -1,0 +1,52 @@
+#!/bin/sh
+#########################################
+
+# platform
+OS=linux
+
+# arch
+ARCH=x86_64
+
+# available encoder: faac voaac fdkaac
+AAC_ENCODER=fdkaac
+#########################################
+
+
+ROOT_PATH=`pwd`
+
+PATH_FFMPEG=$ROOT_PATH/third_party/ffmpeg
+PATH_FDKAAC=$ROOT_PATH/third_party/fdk-aac
+PATH_X264=$ROOT_PATH/third_party/x264
+PATH_FREETYPE=$ROOT_PATH/third_party/freetype2
+
+#cd $PATH_FDKAAC && ./autogen.sh && ./configure  --prefix=$PATH_FDKAAC/prefix  --program-prefix=$PATH_FDKAAC/prefix  \
+#									--libdir=$PATH_FDKAAC/prefix/lib --includedir=$PATH_FDKAAC/prefix/include --bindir=$PATH_FDKAAC/prefix \
+#									&& make && make install
+#
+#
+#cd $PATH_X264 && ./configure --enable-shared --enable-static --disable-opencl --libdir=$PATH_X264/prefix/lib \
+#			     --includedir=$PATH_X264/prefix/include --prefix=$PATH_X264/prefix \
+#                             && make && make install
+#
+##libfreetype
+#cd $PATH_FREETYPE && ./autogen.sh &&./configure --prefix=$PATH_FREETYPE/prefix --libdir=$PATH_FREETYPE/prefix --includedir=$PATH_FREETYPE/prefix \
+#                  && make -j4 && make install
+
+#if [ "$OS" = "linux" ]; then
+#	export PKG_CONFIG_PATH=$PATH_FREETYPE/prefix/pkgconfig:$PATH_X264/prefix/lib/pkgconfig:$PATH_FDKAAC/prefix/lib/pkgconfig:$PKG_CONFIG_PATH
+#	cd $PATH_FFMPEG && ./configure --bindir=./bin --datadir=./data --docdir=./doc --libdir=./lib --shlibdir=./shlib --incdir=./include --enable-libx264 --disable-manpages --enable-gpl --enable-version3 --enable-shared --enable-static --enable-libfdk-aac --enable-openssl --enable-nonfree --disable-ffmpeg --disable-ffplay --disable-ffprobe --enable-libfreetype \
+#	&& make -j4&& make install
+#fi
+
+echo "===========copy file============="
+if [ ! -e ./lib/libffmpeg/lib/libavcodec.a]; then
+	cp -rf  $PATH_FFMPEG/lib ./lib/libffmpeg
+	cp -rf $PATH_FFMPEG/include ./lib/libffmpeg
+fi
+if [ ! -e ./lib/libfdk-aac/lib/libfdk-aac.a]; then
+	cp -rf $PATH_FDKAAC/prefix ./lib/libfdk-aac
+fi
+if [ ! -e ./lib/lib264/lib/lib264.a];then
+	cp -rf $PATH_X264/prefix ./lib/libx264
+fi
+BUILD_VERSION=`date "+%Y%m%d.%H%M%S"`
