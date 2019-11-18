@@ -1,0 +1,11 @@
+prefix=/home/qiniu/CLionProjects/pc-codec/third_party/fdk-aac/prefix
+exec_prefix=${prefix}
+libdir=/home/qiniu/CLionProjects/pc-codec/third_party/fdk-aac/prefix/lib
+includedir=/home/qiniu/CLionProjects/pc-codec/third_party/fdk-aac/prefix/include
+
+Name: Fraunhofer FDK AAC Codec Library
+Description: AAC codec library
+Version: 2.0.1
+Libs: -L${libdir} -lfdk-aac 
+Libs.private: -lm 
+Cflags: -I${includedir}

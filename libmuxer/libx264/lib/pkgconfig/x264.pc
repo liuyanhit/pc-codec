@@ -1,0 +1,11 @@
+prefix=/home/qiniu/CLionProjects/pc-codec/third_party/x264/prefix
+exec_prefix=${prefix}
+libdir=/home/qiniu/CLionProjects/pc-codec/third_party/x264/prefix/lib
+includedir=/home/qiniu/CLionProjects/pc-codec/third_party/x264/prefix/include
+
+Name: x264
+Description: H.264 (MPEG4 AVC) encoder library
+Version: 0.158.2984
+Libs: -L/home/qiniu/CLionProjects/pc-codec/third_party/x264/prefix/lib -lx264 
+Libs.private: -lpthread -lm
+Cflags: -I/home/qiniu/CLionProjects/pc-codec/third_party/x264/prefix/include -DX264_API_IMPORTS

@@ -1,6 +1,6 @@
 [submodule "third_party/fdk-aac"]
 	path = third_party/fdk-aac
-	url = github.com:mstorsjo/fdk-aac.git
+	url = git@github.com:mstorsjo/fdk-aac.git
 [submodule "third_party/x264"]
 	path = third_party/x264
 	url = https://code.videolan.org/videolan/x264.git
